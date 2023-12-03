@@ -22,9 +22,9 @@ public class SphereDrawing extends JPanel {
 	private static final double LIGHT_SPHERE_RADIUS = 5;
 	private static final double LIGHT_X = -Math.sqrt(5);
 	private static final double LIGHT_Y = 2;
-	private static final double LIGHT_Z = -4;
+	private static final double LIGHT_Z = 4;
 	private static final double DRAWN_SPHERE_RADIUS = 1;
-	private static final int POINT_COUNT = 1000000;
+	private static final int POINT_COUNT = 400000;
 	private static Coord[] points;
 	private static final double SCALE = 200;
 	
@@ -60,33 +60,6 @@ public class SphereDrawing extends JPanel {
 			
 			points[i] = new Coord(x, y, z);
 		}
-		
-		/*
-		// https://www.cmu.edu/biolphys/deserno/pdf/sphere_equi.pdf
-		int nCount = 0;
-		double a = (4 * Math.PI * Math.pow(DRAWN_SPHERE_RADIUS, 2))/POINT_COUNT;
-		double d = Math.sqrt(a);
-		double mTheta = Math.round(Math.PI/d);
-		double dTheta = Math.PI/mTheta;
-		double dAzi = a/dTheta;
-		for (int m = 0; m < mTheta; m++) {
-			double theta = Math.PI*(m + 0.5)/mTheta;
-			double mAzi = Math.round((2 * Math.PI * Math.sin(theta))/dAzi);
-			for (int n = 0; n < mAzi; n ++) {
-				double azi = (2 * Math.PI * n)/mAzi;
-				double x = DRAWN_SPHERE_RADIUS * Math.sin(azi) * Math.cos(theta);
-				double y = DRAWN_SPHERE_RADIUS * Math.sin(azi) * Math.sin(theta);
-				double z = DRAWN_SPHERE_RADIUS * Math.cos(azi);
-				points[nCount] = new Coord(x, y, z);
-				nCount ++;
-				//System.out.println(mAzi + " " + mTheta);
-			}
-		} */
-		
-		//System.out.println(offset);
-		//for (int i = 0; i < POINT_COUNT; i++) {
-		//	System.out.println(points[i]);
-		//}
 	}
 
 	
@@ -119,8 +92,8 @@ public class SphereDrawing extends JPanel {
 				
 				//double actArcLength = Math.acos(Math.cos(angL1) * Math.cos(angSF1) + Math.sin(angL1) * Math.sin(angSF1) * Math.cos(angL2 - angSF2)); //calculating arc length at this point
 				double actArcLength = Math.acos(siHat * iHat + sjHat * jHat + skHat * kHat);
-				if (i == 500000)
-					System.out.println(siHat + " " + iHat + " " + sjHat + " " + jHat + " " + skHat + " " + kHat);
+//				if (i == 500000)
+//					System.out.println(siHat + " " + iHat + " " + sjHat + " " + jHat + " " + skHat + " " + kHat);
 				
 				double comp = actArcLength / maxArcLength; // comparing the maximum arc length to the calculated arc length for this vector
 				
